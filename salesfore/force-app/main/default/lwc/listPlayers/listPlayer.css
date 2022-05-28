@@ -1,0 +1,9 @@
+lightning-button.button {
+	--sds-c-button-brand-color-background: red;
+    --sds-c-button-text-color: #f4f7f9;
+}
+
+lightning-button.button:hover {
+	--sds-c-button-brand-color-background: #f4f7f9;
+    --sds-c-button-text-color: red;
+}

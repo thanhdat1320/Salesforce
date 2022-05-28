@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Player">
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="4">
+            <lightning-button variant="brand" label="Create" title="Open Modal" onclick={customShowModalPopup}
+                class="slds-m-left_x-small" icon-name="utility:new" icon-position="right">
+            </lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                <lightning-button title="Delete" label="Delete" size="small" variant="destructive"
+                    icon-name="utility:delete" icon-position="right" onclick={deletePlayerRowAction} class="right-align button">
+                </lightning-button>
+                <!-- <c-delete-Player class="slds-hidden" selected-ids={selectedIds}></c-delete-Player> -->
+            </lightning-layout-item>
+            <lightning-layout-item size="3">
+                <c-search-Player ongetsearchvalue={handelSearchValue}></c-search-Player>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+<lightning-card>
+    <lightning-layout multiple-rows="true" vertical-align="end">
+        <lightning-layout-item size="12">
+            <lightning-datatable 
+                key-field="id" 
+                data={visiblePlayer} 
+                columns={columns} 
+                row-number-offset={rowOffset}
+                selected-rows={setSelectedRows}
+                onrowaction={handleRowAction}
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={onHandleSort}>
+                >
+            </lightning-datatable>
+        </lightning-layout-item>
+        <div class="slds-var-m-vertical_medium">
+            <c-pagination records={listPlayer} onupdate={updatePlayerHandler}></c-pagination>
+        </div>
+    </lightning-layout>
+</lightning-card>
+    <c-edit-Player class="slds-hidden" record-id={recordId} onsavesucess={handleAfterSuccess}></c-edit-Player>
+    <c-detail-Player class="slds-hidden" record-id={recordId}></c-detail-Player>
+    <c-create-Player class="slds-hidden" onsavesucess={handleAfterSuccess}></c-create-Player>
+</template>

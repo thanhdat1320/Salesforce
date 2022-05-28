@@ -1,0 +1,34 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item>
+            <lightning-button label="First" icon-name="utility:chevronleft" onclick={handlerFirst} disabled={disablePrevious}>
+            </lightning-button>
+            <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler} disabled={disablePrevious}>
+            </lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="grow">
+            <div class="slds-text-body_regular">
+                <h1 class="myCustom">Page: {currentPage}/{totalPage}</h1>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler} disabled={disableNext}>
+            </lightning-button>
+            <lightning-button label="Last" icon-name="utility:chevronright" icon-position="right" onclick={handlerLast} disabled={disableNext}>
+            </lightning-button>
+        </lightning-layout-item>
+        <div class="slds-col"><!--RECORDS PER PAGE-->
+            <div class="slds-list_inline slds-p-bottom_xx-small customSelect">
+                <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage"></label>
+                <p>Pagesize:</p>
+                <div class="slds-select_container">
+                    <select class="slds-select" id="recordsPerPage" onchange={handleRecordsPerPage}>
+                        <template for:each={pageSizeOptions} for:item="option">
+                            <option key={option} value={option}>{option}</option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </lightning-layout>
+</template>
